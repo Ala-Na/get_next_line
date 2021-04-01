@@ -6,7 +6,7 @@
 /*   By: elanna <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:01:23 by elanna            #+#    #+#             */
-/*   Updated: 2021/04/01 15:30:04 by elanna           ###   ########.fr       */
+/*   Updated: 2021/04/01 21:41:56 by elanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strchr(const char *s, int c);
 t_content		*ft_lstnew(char *buffer, int fd);
 void			ft_lstadd_back(t_content **alst, t_content *new);
+void			ft_delcont(int fd, t_content **content);
 t_content		*ft_lstchr_fd(t_content **lst, int fd);
 int				get_content_line(int fd, char **line, ssize_t rd,
 					t_content **cont);

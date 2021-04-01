@@ -6,11 +6,39 @@
 /*   By: elanna <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:01:40 by elanna            #+#    #+#             */
-/*   Updated: 2021/04/01 20:53:04 by elanna           ###   ########.fr       */
+/*   Updated: 2021/04/01 21:41:36 by elanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void		ft_delcont(int fd, t_content **content)
+{
+	t_content	*fd_content;
+	t_content	*prev_content;
+
+	prev_content = *content;
+	if (prev_content->fd == fd && !prev_content->next)
+	{
+		free(prev_content);
+		*content = NULL;
+		return ;
+	}
+	else if (prev_content->fd == fd && prev_content->next)
+	{
+		*content = prev_content->next;
+		free(prev_content);
+		return ;
+	}
+	while (prev_content->next != NULL && (prev_content->next)->fd != fd)
+	{
+		prev_content = prev_content->next;
+	}
+	fd_content = prev_content->next;
+	prev_content->next = fd_content->next;
+	free(fd_content);
+	return ;
+}
 
 t_content	*ft_lstchr_fd(t_content **lst, int fd)
 {
@@ -51,6 +79,7 @@ int			get_content_line(int fd, char **line, ssize_t rd, t_content **cont)
 	}
 	*line = fd_content->buffer;
 	fd_content->buffer = NULL;
+	ft_delcont(fd, cont);
 	return (0);
 }
 
