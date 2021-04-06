@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elanna <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 17:01:40 by elanna            #+#    #+#             */
-/*   Updated: 2021/04/01 21:41:36 by elanna           ###   ########.fr       */
+/*   Updated: 2021/04/06 11:45:51 by elanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void		ft_delcont(int fd, t_content **content)
 {
@@ -71,7 +71,7 @@ int			get_content_line(int fd, char **line, ssize_t rd, t_content **cont)
 	if (ptr != NULL)
 	{
 		*ptr = '\0';
-		*line = ft_strdup((const char*)fd_content->buffer);
+		*line = ft_strdup(fd_content->buffer);
 		tmp = ft_strdup(++ptr);
 		free(fd_content->buffer);
 		fd_content->buffer = tmp;
@@ -103,7 +103,6 @@ void		fill_content_struct(t_content **content, char *buffer, int fd)
 			ft_lstadd_back(content, ft_lstnew(buffer, fd));
 	}
 }
-
 
 int			get_next_line(int fd, char **line)
 {

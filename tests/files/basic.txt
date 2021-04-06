@@ -2,6 +2,12 @@ Ceci est un petit test
 Coucou
 Salut
 Bonjour
-Bonjiorno
+Hello
+Hi
+Buongiorno
+Hola
+Ola
+안녕하세요
+こんにちは
 Itadekimase
 Tenatroprigro
